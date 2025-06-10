@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview([self.scroll, self.questionsModel.view])
+        self.view.addSubview([self.scroll, self.questionsModel.status.view, self.questionsModel.view])
         self.questionsModel.onUpdate = {
             let buttons = self.scroll.setButtons(self.questionsModel.questions)
             buttons.forEach { button in
@@ -31,6 +31,10 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         self.scroll.frame.origin.y = self.view.safeAreaInsets.top
         self.scroll.frame.size.height = self.view.frame.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom
+        NSLayoutConstraint.activate([
+            self.questionsModel.status.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.questionsModel.status.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -self.view.safeAreaInsets.bottom),
+        ])
     }
 
 }

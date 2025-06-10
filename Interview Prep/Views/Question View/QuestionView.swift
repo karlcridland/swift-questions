@@ -18,6 +18,7 @@ class QuestionView: UIView {
         super.init(frame: UIScreen.main.bounds)
         self.addSubview([self.background, self.info])
         self.isHidden = true
+        self.info.addTarget(self, action: #selector(self.hide), for: .touchUpInside)
         self.background.addTarget(self, action: #selector(self.hide), for: .touchUpInside)
     }
     

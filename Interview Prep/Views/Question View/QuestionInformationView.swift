@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionInformationView: UIView {
+class QuestionInformationView: UIButton {
     
     let category, title, answer: UILabel
     let understanding: QuestionInformationButtons
