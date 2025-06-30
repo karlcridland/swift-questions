@@ -62,6 +62,8 @@ class QuestionsModel {
             results = results.filter({self.category_filter.contains($0.category)})
         }
         self.questions = results
+        let confidence: [String] = self.questions.map({"    \($0.question): \($0.understanding.rawValue)"})
+        print("{\n\(confidence.joined(separator: ",\n"))\n}")
         self.status.update(self.questions)
     }
     
